@@ -101,7 +101,7 @@ client.on('ready', () =>
         })
     })
 
-    command(client, 'oing', (message) =>
+    command(client, 'iong', (message) =>
     {
         message.channel.send('Kut.').then(() =>
         {
