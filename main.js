@@ -101,6 +101,14 @@ client.on('ready', () =>
         })
     })
 
+    command(client, 'oing', (message) =>
+    {
+        message.channel.send('Kut.').then(() =>
+        {
+            console.log('Done!')
+        })
+    })
+
 
 
     //DM's a list of players for each day
@@ -359,7 +367,7 @@ client.on('ready', () =>
         collect(client,DOW,Days).then(() =>
         {
             console.log('Done!')
-        }).catch(err => caught = err)
+        }) 
         message.delete().catch(error =>
         {
             console.log('Message Already Deleted.')
@@ -685,6 +693,9 @@ client.on('message', function(message,user)
     }
 })
 //-----------------------------------------------------------------------------------JOINED-------------------------------------------------------------------------------------------------------------
-
+client.on("guildMemberAdd", member =>
+{
+    member.roles.add(process.env.ImpoRole)
+})
 //-----------------------------------------------------------------------------------LOGIN-------------------------------------------------------------------------------------------------------------
 client.login(process.env.BotToken)
