@@ -19,7 +19,7 @@ module.exports = (client, id, text, reactions = []) =>
                 channel.send(text).then(message =>
                 {
                     addReactions(message, reactions)
-                }).catch(err => caught = err)
+                })
             }
             for(msg of messages.values())
             {
