@@ -359,7 +359,7 @@ client.on('ready', () =>
         collect(client,DOW,Days).then(() =>
         {
             console.log('Done!')
-        }) 
+        }).catch(err => caught = err)
         message.delete().catch(error =>
         {
             console.log('Message Already Deleted.')

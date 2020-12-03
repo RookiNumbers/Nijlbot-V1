@@ -8,30 +8,31 @@ const addReactions = (message, reactions) =>
     }
 }
 
-module.exports = async (client, id, text, reactions = []) =>
+module.exports = (client, id, text, reactions = []) =>
 {
-    const channel = await client.channels.fetch(id)
-    channel.messages.fetch().then((messages) =>
+    client.channels.fetch(id).then(channel =>
     {
-        if (messages.size === 0) 
+        channel.messages.fetch().then((messages) =>
+        {
+            if (messages.size === 0) 
             {
                 channel.send(text).then(message =>
                 {
                     addReactions(message, reactions)
-                })
+                }).catch(err => caught = err)
             }
-        for(msg of messages.values())
-        {
-            if(msg.author.bot == false)
+            for(msg of messages.values())
             {
-                msg.delete()
+                if(msg.author.bot == false)
+                {
+                    msg.delete()
+                }
+                else
+                {
+                    msg.edit(text)
+                    addReactions(msg, reactions)
+                }
             }
-            else
-            {
-                msg.edit(text)
-                addReactions(msg, reactions)
-            }
-        }
-        
-    })
+        })
+    }).catch(err => caught = err)
 }
