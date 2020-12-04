@@ -39,6 +39,8 @@ var DOW = new Date().getDay()
 if(DOW == 0){DOW = 7}
 var job = new cronjob('0 7 * * *', () =>        //Every 7th hour of every day
 {
+    var DOW = new Date().getDay()
+    if(DOW == 0){DOW = 7}
     console.log(`\n\n\n\n\n\n\n\n\nNew Day! (Day ${DOW} of the week)\n\n\n\n\n\n\n\n\n`)
     if(DOW == 7)
     {
@@ -114,6 +116,8 @@ client.on('ready', () =>
     //DM's a list of players for each day
     command(client, 'list', (message) =>
     {
+        var DOW = new Date().getDay()
+        if(DOW == 0){DOW = 7}
         let poll = client.channels.resolve(process.env.PollChannel).messages.resolve(process.env.PollMsg)
         let rs = poll.reactions.cache.array()
         console.log(rs.length)
@@ -172,6 +176,8 @@ client.on('ready', () =>
 
     command(client, 'reset', (message) =>
     {
+        var DOW = new Date().getDay()
+        if(DOW == 0){DOW = 7}
         authorised = false
         var Crewmates = client.guilds.resolve(process.env.ServerID).roles.resolve(process.env.CrewRole).members
         var Admins = client.guilds.resolve(process.env.ServerID).roles.resolve(process.env.AdminRole).members
@@ -351,6 +357,8 @@ client.on('ready', () =>
 
     command(client, 'update', (message) =>
     {
+        var DOW = new Date().getDay()
+        if(DOW == 0){DOW = 7}
         var Crewmates = client.guilds.resolve(process.env.ServerID).roles.resolve(process.env.CrewRole).members
         const server = client.guilds.resolve(process.env.ServerID)
         const members = server.members.cache.values()
