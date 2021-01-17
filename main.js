@@ -42,7 +42,7 @@ var job = new cronjob('1 0 * * *', () =>        //Every 7th hour of every day
     var DOW = new Date().getDay()
     if(DOW == 0){DOW = 7}
     console.log(`\n\n\n\n\n\n\n\n\nNew Day! (Day ${DOW} of the week)\n\n\n\n\n\n\n\n\n`)
-    if(DOW == 7)
+    if(DOW == 1)
     {
         console.log('Resetting Poll...')
         client.channels.fetch(process.env.PollChannel).then(channel =>
