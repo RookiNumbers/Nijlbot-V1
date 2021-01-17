@@ -37,7 +37,7 @@ var Sunday = new Map()
 var Days = [null, Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday]
 var DOW = new Date().getDay()
 if(DOW == 0){DOW = 7}
-var job = new cronjob('0 7 * * *', () =>        //Every 7th hour of every day
+var job = new cronjob('1 0 * * *', () =>        //Every 7th hour of every day
 {
     var DOW = new Date().getDay()
     if(DOW == 0){DOW = 7}
